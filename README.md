@@ -14,3 +14,29 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Server Instructions
+
+To start the server, run the following command:
+```
+npm run dev
+```
+
+## Testing Instructions
+
+To run tests, use the following command:
+```
+npm test
+```
+
+## Stripe webhooks (local development)
+
+1. Install the Stripe CLI: https://stripe.com/docs/stripe-cli
+2. Start the local server: `npm run server` (uses `STRIPE_SECRET_KEY` from `.env`)
+3. Forward events to your local webhook endpoint:
+
+```bash
+stripe listen --forward-to localhost:4242/webhook
+```
+
+4. Use the Stripe test card 4242 4242 4242 4242 for successful payments in Checkout.
+

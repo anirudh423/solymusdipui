@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#fff4e6" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fff1df" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="emboss" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="off"/>
+      <feSpecularLighting in="blur" surfaceScale="2" specularConstant="0.4" specularExponent="12" lighting-color="#ffd29a" result="spec">
+        <fePointLight x="-200" y="-200" z="400" />
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in" result="emboss"/>
+      <feMerge>
+        <feMergeNode in="emboss"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#emboss)">
+    <text x="50%" y="60%" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="120" fill="url(#g)" fill-opacity="0.55">Solymus</text>
+  </g>
+</svg>

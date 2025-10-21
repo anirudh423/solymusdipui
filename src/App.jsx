@@ -2,6 +2,7 @@ import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import './styles/QuoteSummary.css'
 import QuoteSummary from './pages/QuoteSummary'
+import PolicyPurchase from './pages/PolicyPurchase'
 
 function Home() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quote-summary" element={<QuoteSummary />} />
+        <Route path="/policy-purchase" element={<PolicyPurchase />} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import '../styles/QuoteSummary.css'
 
@@ -104,6 +104,13 @@ export default function QuoteSummary() {
       if (prevActive && prevActive.focus) prevActive.focus()
     }
   }, [showModal])
+
+  const navigate = useNavigate()
+
+  function goToPurchase() {
+    // pass quote as cart state to the purchase page
+    navigate('/policy-purchase', { state: { cart: quote } })
+  }
 
   return (
     <div className="qs-root">
@@ -256,7 +263,9 @@ export default function QuoteSummary() {
             <p>You're about to purchase the policy for {quote.holder} at {formatCurrency(quote.premium)}.</p>
             <div className="modal-actions">
               <button className="btn-outline" onClick={() => setShowModal(false)}>Cancel</button>
-              <button className="btn-primary" onClick={() => { setShowModal(false); alert('Purchase flow not implemented.'); }}>Confirm & Pay</button>
+              <div className="btn-primary" onClick={() => { setShowModal(false); goToPurchase(); }}>
+                Confirm & Pay
+              </div>
             </div>
           </div>
         </div>
