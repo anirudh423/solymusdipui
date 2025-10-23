@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import jsPDF from "jspdf";
 import confetti from "canvas-confetti";
@@ -152,10 +152,20 @@ export default function PolicyPurchase() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                 >
-                    <h1 className="hero-title">Your Policy, Refined</h1>
-                    <p className="hero-sub">
-                        "Luxury isn’t about excess. It’s about confidence — in what protects you."
-                    </p>
+                    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+                        <div>
+                            <h1 className="hero-title">Your Policy, Refined</h1>
+                            <p className="hero-sub">
+                                "Luxury isn’t about excess. It’s about confidence — in what protects you."
+                            </p>
+                        </div>
+
+                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                            <Link to="/admin/login" className="btn-admin" aria-label="Admin login">
+                                Admin
+                            </Link>
+                        </div>
+                    </div>
                 </motion.div>
             </section>
 
@@ -316,10 +326,11 @@ export default function PolicyPurchase() {
 
                     {errorMessage && <p className="error-msg">{errorMessage}</p>}
 
-                    <div className="action-row">
+                    <div className="action-row" style={{ display: "flex", gap: 10, alignItems: "center" }}>
                         <button className="btn-secondary" onClick={() => navigate(-1)}>
                             Back
                         </button>
+
                         <button
                             className="btn-purchase large"
                             onClick={() => setConfirmOpen(true)}
@@ -327,6 +338,10 @@ export default function PolicyPurchase() {
                         >
                             {loading ? "Processing…" : "Confirm & Pay"}
                         </button>
+
+                        <Link to="/admin/login" className="btn-admin action-row" aria-label="Admin login (dashboard)">
+                            Admin Login
+                        </Link>
                     </div>
 
                     {status?.type === "success" && (

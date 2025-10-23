@@ -380,3 +380,20 @@
         height: 160px;
     }
 }
+
+.btn-admin {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 12px;
+  border-radius:10px;
+  background: rgba(255,255,255,0.02);
+  
+  border: 1px solid rgba(255,255,255,0.04);
+  font-weight:700;
+  text-decoration:none;
+  font-size:13px;
+  transition: transform .12s ease, box-shadow .14s ease, background .12s ease;
+}
+.btn-admin:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(2,4,6,0.36); background: rgba(255,255,255,0.01); }
+.btn-admin.action-row { margin-left: 8px; }

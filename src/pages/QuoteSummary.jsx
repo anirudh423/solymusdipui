@@ -108,7 +108,6 @@ export default function QuoteSummary() {
   const navigate = useNavigate()
 
   function goToPurchase() {
-    // pass quote as cart state to the purchase page
     navigate('/policy-purchase', { state: { cart: quote } })
   }
 
@@ -124,8 +123,16 @@ export default function QuoteSummary() {
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="17" stroke="rgba(183,134,40,0.12)" strokeWidth="1.6" fill="none" /><text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fontFamily="Playfair Display, serif" fontSize="14" fill="rgba(183,134,40,0.9)">S</text></svg>
           </span>
         </div>
+
         <div className="qs-nav-actions">
           <Link to="/" className="qs-link">Home</Link>
+
+          <Link to="/admin/login" className="qs-admin-btn" title="Admin sign in" aria-label="Admin sign in">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden focusable="false" className="admin-lock-icon">
+              <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5z" fill="currentColor" />
+            </svg>
+            Admin
+          </Link>
         </div>
       </nav>
 
@@ -298,5 +305,3 @@ export default function QuoteSummary() {
     </div>
   )
 }
-
-

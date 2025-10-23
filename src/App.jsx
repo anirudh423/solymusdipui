@@ -4,6 +4,7 @@ import "./styles/QuoteSummary.css";
 import QuoteSummary from "./pages/QuoteSummary";
 import PolicyPurchase from "./pages/PolicyPurchase";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
 
 function Home() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/quote-summary" element={<QuoteSummary />} />
         <Route path="/policy-purchase" element={<PolicyPurchase />} />
+         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -1285,3 +1285,49 @@ html {
 .panel-header {
   z-index: 2
 }
+.qs-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qs-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(213,173,90,0.08), rgba(183,134,40,0.03));
+  color: var(--accent-2, #f7e3b0);
+  border: 1px solid rgba(183,134,40,0.12);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 13px;
+  transition: transform 140ms ease, box-shadow 160ms ease, background 160ms ease;
+  box-shadow: 0 4px 14px rgba(183,134,40,0.06);
+}
+
+.qs-admin-btn .admin-lock-icon { color: var(--accent-2, #f7e3b0); opacity: 0.95; }
+
+.qs-admin-btn:hover,
+.qs-admin-btn:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(183,134,40,0.12);
+  background: linear-gradient(180deg, rgba(213,173,90,0.12), rgba(183,134,40,0.06));
+  outline: none;
+}
+
+.qs-admin-btn:focus {
+  box-shadow: 0 0 0 4px rgba(213,173,90,0.12), 0 12px 36px rgba(183,134,40,0.12);
+}
+
+@media (max-width: 700px) {
+  .qs-nav-actions {
+    gap: 8px;
+  }
+  .qs-admin-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+

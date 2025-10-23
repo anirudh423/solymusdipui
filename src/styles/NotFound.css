@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:wght@600;800&display=swap');
 
 :root {
-    --bg: #0f1314;
+    --bg: #e6ebec;
     --panel: rgba(255, 255, 255, 0.04);
     --muted: rgba(255, 255, 255, 0.72);
     --text: #f5f3ee;
