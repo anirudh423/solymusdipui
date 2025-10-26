@@ -858,6 +858,7 @@ export default function AdminBlogs() {
                 <nav className="nav-links" role="navigation" aria-label="Primary">
                     <Link to="/admin/dashboard" className="nav-link">Overview</Link>
                     <Link to="/admin/content" className="nav-link">Content</Link>
+                    <Link to="/admin/hospitals" className="nav-link">Hospitals</Link>
                     <Link to="/admin/blogs" className="nav-link active">Blogs</Link>
                     <Link to="/admin/leads" className="nav-link">Leads</Link>
                     <Link to="/admin/settings" className="nav-link">Settings</Link>
@@ -918,7 +919,7 @@ export default function AdminBlogs() {
                 <main role="main" style={{ display: "grid", gridTemplateColumns: "1fr 300px", gap: 12, alignItems: "start" }}>
                     <section>
                         <div className="bento-card hero-blogs" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
-                            <div className="hero-left">
+                            <div className="hero-left" style={{ flex: '1 1 100px' }}>
                                 <div className="title">Manage posts</div>
                                 <div className="sub">Design stories that move people. Publish with confidence.</div>
                                 <div style={{ marginTop: 10, display: "flex", gap: 8 }}>

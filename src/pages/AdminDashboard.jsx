@@ -511,6 +511,7 @@ export default function AdminDashboard() {
         <nav className="nav-links" role="navigation" aria-label="Primary">
           <Link to="/admin/dashboard" className="nav-link active">Overview</Link>
           <Link to="/admin/content" className="nav-link">Content</Link>
+          <Link to="/admin/hospitals" className="nav-link">Hospitals</Link>
           <Link to="/admin/blogs" className="nav-link">Blogs</Link>
           <Link to="/admin/leads" className="nav-link">Leads</Link>
           <Link to="/admin/settings" className="nav-link">Settings</Link>
