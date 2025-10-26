@@ -6,6 +6,7 @@ import PolicyPurchase from "./pages/PolicyPurchase";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminBlogs from "./pages/AdminBlogs";
 
 function Home() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/policy-purchase" element={<PolicyPurchase />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/blogs" element={<AdminBlogs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

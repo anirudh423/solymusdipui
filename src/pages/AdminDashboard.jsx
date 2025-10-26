@@ -511,6 +511,7 @@ export default function AdminDashboard() {
         <nav className="nav-links" role="navigation" aria-label="Primary">
           <Link to="/admin/dashboard" className="nav-link active">Overview</Link>
           <Link to="/admin/content" className="nav-link">Content</Link>
+          <Link to="/admin/blogs" className="nav-link">Blogs</Link>
           <Link to="/admin/leads" className="nav-link">Leads</Link>
           <Link to="/admin/settings" className="nav-link">Settings</Link>
         </nav>
@@ -741,8 +742,11 @@ export default function AdminDashboard() {
           <div className="tt-mini-spark"><Spark points={tileTip.points} w={120} h={36} /></div>
         </div>
       )}
+      {
+        drawerOpen && <DetailDrawer open={drawerOpen} onClose={closeDrawer} kind={drawerKind} payload={drawerPayload} />
 
-      <DetailDrawer open={drawerOpen} onClose={closeDrawer} kind={drawerKind} payload={drawerPayload} />
+      }
+
 
       {toast && <div className={`toast toast-${toast.type || "info"}`} role="status" aria-live="polite">{toast.text}</div>}
     </div>
