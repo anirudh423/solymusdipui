@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
 import "../styles/solymus-hospitals.css";
 
 const STORAGE_KEY = "solymus_hospitals_v1";
@@ -647,6 +647,7 @@ function TableView({ items, onEdit, onPreview, onDuplicate, onDelete, selected, 
 
 
 export default function AdminHospitals() {
+
     const [hospitals, setHospitals] = useState(() => loadFromStore());
     const [query, setQuery] = useState("");
     const [statusFilter, setStatusFilter] = useState("all");
@@ -672,7 +673,7 @@ export default function AdminHospitals() {
         }
     });
     const [fabOpen, setFabOpen] = useState(false);
-    const [viewMode, setViewMode] = useState("grid"); // grid | table
+    const [viewMode, setViewMode] = useState("grid");
     const [importPreview, setImportPreview] = useState(null);
 
     useEffect(() => {
@@ -683,7 +684,6 @@ export default function AdminHospitals() {
     }, [theme]);
 
     useEffect(() => saveToStore(hospitals), [hospitals]);
-
     const totalBeds = useMemo(() => hospitals.reduce((s, h) => s + (Number(h.beds) || 0), 0), [hospitals]);
     const totalHospitals = hospitals.length;
     const active = hospitals.filter((h) => h.status === "active").length;
@@ -1240,7 +1240,7 @@ export default function AdminHospitals() {
                                         toggleSelect={toggleSelect}
                                     />
                                 ) : (
-                                    <div className="posts-grid">
+                                    <Link to={'/admin/branches'} className="posts-grid">
                                         {pageItems.map((h, idx) => {
                                             const isTop = (h.rating || 0) >= 4.2;
                                             return (
@@ -1303,7 +1303,7 @@ export default function AdminHospitals() {
                                                 </article>
                                             );
                                         })}
-                                    </div>
+                                    </Link>
                                 )}
 
                                 {pageItems.length === 0 && <div className="muted center" style={{ padding: 20 }}>No hospitals</div>}
