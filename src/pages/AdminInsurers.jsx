@@ -53,7 +53,7 @@ export default function AdminInsurers() {
     } catch {
       return "table";
     }
-  }); 
+  });
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editing, setEditing] = useState(null);
   const [editingTab, setEditingTab] = useState("details");
@@ -79,7 +79,7 @@ export default function AdminInsurers() {
   useEffect(() => {
     try {
       localStorage.setItem(VIEW_KEY, viewMode);
-    } catch {}
+    } catch { }
   }, [viewMode]);
 
   useEffect(() => {
@@ -379,11 +379,11 @@ export default function AdminInsurers() {
   }
 
   const IconGrid = ({ active }) => (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2" opacity={active?1:0.6}></rect><rect x="13" y="3" width="8" height="8" rx="2" opacity={active?1:0.6}></rect><rect x="3" y="13" width="8" height="8" rx="2" opacity={active?1:0.6}></rect><rect x="13" y="13" width="8" height="8" rx="2" opacity={active?1:0.6}></rect></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2" opacity={active ? 1 : 0.6}></rect><rect x="13" y="3" width="8" height="8" rx="2" opacity={active ? 1 : 0.6}></rect><rect x="3" y="13" width="8" height="8" rx="2" opacity={active ? 1 : 0.6}></rect><rect x="13" y="13" width="8" height="8" rx="2" opacity={active ? 1 : 0.6}></rect></svg>
   );
 
   const IconList = ({ active }) => (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden fill="currentColor"><rect x="3" y="5" width="18" height="2" rx="1" opacity={active?1:0.6}></rect><rect x="3" y="11" width="18" height="2" rx="1" opacity={active?1:0.6}></rect><rect x="3" y="17" width="18" height="2" rx="1" opacity={active?1:0.6}></rect></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden fill="currentColor"><rect x="3" y="5" width="18" height="2" rx="1" opacity={active ? 1 : 0.6}></rect><rect x="3" y="11" width="18" height="2" rx="1" opacity={active ? 1 : 0.6}></rect><rect x="3" y="17" width="18" height="2" rx="1" opacity={active ? 1 : 0.6}></rect></svg>
   );
 
   function BulkActionBar({ count }) {
@@ -412,10 +412,13 @@ export default function AdminInsurers() {
 
         <nav className="nav-links">
           <Link to="/admin/dashboard" className="nav-link">Overview</Link>
-          <Link to="/admin/insurers" className="nav-link active">Insurers</Link>
-          <Link to="/admin/branches" className="nav-link">Branches</Link>
+          <Link to="/admin/content" className="nav-link">Content</Link>
           <Link to="/admin/hospitals" className="nav-link">Hospitals</Link>
-          <Link to="/admin/blogs" className="nav-link">Blogs</Link>
+          <Link to="/admin/blogs" className="nav-link ">Blogs</Link>
+          <Link to="/admin/insurers" className="nav-link active">Insurers</Link>
+          <Link to="/admin/claims" className="nav-link">Claims</Link>
+          <Link to="/admin/leads" className="nav-link">Leads</Link>
+          <Link to="/admin/settings" className="nav-link">Settings</Link>
         </nav>
 
         <div className="nav-foot">Local storage: {STORAGE_KEY}</div>
@@ -429,9 +432,9 @@ export default function AdminInsurers() {
             <div className="hero-title-wrap">
               <h1 className="hero-title">Manage Insurers &amp; Forms</h1>
               <svg className="gold-flourish" viewBox="0 0 120 24" aria-hidden>
-                <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stopColor="#d39a2f"/><stop offset="1" stopColor="#f6d89b"/></linearGradient></defs>
+                <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stopColor="#d39a2f" /><stop offset="1" stopColor="#f6d89b" /></linearGradient></defs>
                 <path d="M2 18 C28 4, 92 4, 118 18" stroke="url(#g)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-                <circle cx="30" cy="12" r="1.6" fill="#f6d89b"><animate attributeName="r" values="1.6;3.2;1.6" dur="2.6s" repeatCount="indefinite"/></circle>
+                <circle cx="30" cy="12" r="1.6" fill="#f6d89b"><animate attributeName="r" values="1.6;3.2;1.6" dur="2.6s" repeatCount="indefinite" /></circle>
               </svg>
             </div>
 
@@ -482,8 +485,8 @@ export default function AdminInsurers() {
                 </div>
 
                 <div className="view-toggle" role="tablist" aria-label="View mode">
-                  <button className={`ghost-icon ${viewMode === "table" ? "active" : ""}`} onClick={() => setViewMode("table")} title="Table view"><IconList active={viewMode==="table"} /></button>
-                  <button className={`ghost-icon ${viewMode === "cards" ? "active" : ""}`} onClick={() => setViewMode("cards")} title="Card view"><IconGrid active={viewMode==="cards"} /></button>
+                  <button className={`ghost-icon ${viewMode === "table" ? "active" : ""}`} onClick={() => setViewMode("table")} title="Table view"><IconList active={viewMode === "table"} /></button>
+                  <button className={`ghost-icon ${viewMode === "cards" ? "active" : ""}`} onClick={() => setViewMode("cards")} title="Card view"><IconGrid active={viewMode === "cards"} /></button>
                   <button className={`ghost-icon ${viewMode === "compact" ? "active" : ""}`} onClick={() => setViewMode("compact")} title="Compact view">C</button>
                 </div>
               </div>
@@ -607,7 +610,7 @@ export default function AdminInsurers() {
                     <div className="card-body">
                       <div className="muted">Attachments</div>
                       <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8 }}>
-                        <div className="file-preview">{(s.forms || []).slice(0,3).map(f => <div key={f.id} className="file-chip" title={f.filename}>{f.filename.split(".")[0]}</div>)}</div>
+                        <div className="file-preview">{(s.forms || []).slice(0, 3).map(f => <div key={f.id} className="file-chip" title={f.filename}>{f.filename.split(".")[0]}</div>)}</div>
                         <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
                           <button className="btn-outline" onClick={() => openEdit(s)}>Open</button>
                           <button className="btn-ghost" onClick={() => duplicateInsurer(s)}>Duplicate</button>
@@ -624,10 +627,10 @@ export default function AdminInsurers() {
                 {pageItems.map(s => (
                   <div key={s.id} className="compact-row">
                     <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                      <div className="avatar tiny">{s.name.split(" ").map(x=>x[0]).slice(0,2).join("")}</div>
+                      <div className="avatar tiny">{s.name.split(" ").map(x => x[0]).slice(0, 2).join("")}</div>
                       <div>
                         <div className="row-title">{s.name}</div>
-                        <div className="muted small">{s.code} · {(s.forms||[]).length} files</div>
+                        <div className="muted small">{s.code} · {(s.forms || []).length} files</div>
                       </div>
                     </div>
                     <div style={{ display: "flex", gap: 8 }}>
