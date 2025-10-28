@@ -9,6 +9,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminBlogs from "./pages/AdminBlogs";
 import AdminHospitals from "./pages/AdminHospitals";
 import AdminBranches from "./pages/AdminBranches";
+import AdminInsurers from "./pages/AdminInsurers";
 
 function Home() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/admin/blogs" element={<AdminBlogs />} />
         <Route path="/admin/hospitals" element={<AdminHospitals />} />
         <Route path="/admin/branches" element={<AdminBranches />} />
+        <Route path="/admin/insurers" element={<AdminInsurers />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

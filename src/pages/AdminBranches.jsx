@@ -404,8 +404,11 @@ export default function AdminBranches() {
                     <Link to="/admin/content" className="nav-link">Content</Link>
                     <Link to="/admin/hospitals" className="nav-link">Hospitals</Link>
                     <Link to="/admin/blogs" className="nav-link">Blogs</Link>
+                    <Link to="/admin/insurers" className="nav-link">Insurers</Link>
+
                     <Link to="/admin/branches" className="nav-link active">Branches</Link>
                     <Link to="/admin/settings" className="nav-link">Settings</Link>
+
                 </nav>
 
                 <div className="nav-foot" style={{ padding: 12, fontSize: 12, color: "var(--muted)" }}>

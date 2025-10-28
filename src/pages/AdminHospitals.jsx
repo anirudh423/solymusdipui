@@ -1026,6 +1026,8 @@ export default function AdminHospitals() {
                     <Link to="/admin/content" className="nav-link">Content</Link>
                     <Link to="/admin/hospitals" className="nav-link active">Hospitals</Link>
                     <Link to="/admin/blogs" className="nav-link">Blogs</Link>
+                    <Link to="/admin/insurers" className="nav-link">Insurers</Link>
+
                     <Link to="/admin/leads" className="nav-link">Leads</Link>
                     <Link to="/admin/settings" className="nav-link">Settings</Link>
                 </nav>
