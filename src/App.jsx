@@ -12,6 +12,7 @@ import AdminBranches from "./pages/AdminBranches";
 import AdminInsurers from "./pages/AdminInsurers";
 import AdminClaims from "./pages/AdminClaims";
 import AdminLeads from "./pages/AdminLeads";
+import AdminQuotePricing from "./pages/AdminQuotePricing";
 
 function Home() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/admin/insurers" element={<AdminInsurers />} />
         <Route path="/admin/claims" element={<AdminClaims />} />
         <Route path="/admin/leads" element={<AdminLeads />} />
+        <Route path="/admin/quote-pricing" element={<AdminQuotePricing />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -407,6 +407,8 @@ export default function AdminBranches() {
                     <Link to="/admin/insurers" className="nav-link">Insurers</Link>
                     <Link to="/admin/claims" className="nav-link">Claims</Link>
                     <Link to="/admin/leads" className="nav-link">Leads</Link>
+                    <Link to='/admin/quote-pricing' className="nav-link">Quote Pricing</Link>
+
                     <Link to="/admin/settings" className="nav-link">Settings</Link>
 
                 </nav>
