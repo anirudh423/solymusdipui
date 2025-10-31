@@ -391,6 +391,7 @@ export default function AdminClaims() {
                     <Link to="/admin/claims" className="nav-link active">Claims</Link>
                     <Link to="/admin/leads" className="nav-link">Leads</Link>
                     <Link to='/admin/quote-pricing' className="nav-link">Quote Pricing</Link>
+                    <Link to="/admin/chatbot" className="nav-link">Chatbot</Link>
 
                     <Link to="/admin/settings" className="nav-link">Settings</Link>
                 </nav>
