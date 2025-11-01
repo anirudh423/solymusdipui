@@ -866,6 +866,7 @@ export default function AdminBlogs() {
                     <Link to='/admin/quote-pricing' className="nav-link">Quote Pricing</Link>
                     <Link to="/admin/chatbot" className="nav-link">Chatbot</Link>
                     <Link to="/admin/settings" className="nav-link">Settings</Link>
+                    <Link to= "/admin/logout" className="nav-link">Logout</Link>
                 </nav>
 
                 <div style={{ marginTop: 8 }}>

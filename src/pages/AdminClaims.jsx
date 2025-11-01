@@ -394,6 +394,8 @@ export default function AdminClaims() {
                     <Link to="/admin/chatbot" className="nav-link">Chatbot</Link>
 
                     <Link to="/admin/settings" className="nav-link">Settings</Link>
+                                        <Link to= "/admin/logout" className="nav-link">Logout</Link>
+                    
                 </nav>
 
                 <div className="nav-foot">Local storage: {STORAGE_KEY}</div>

@@ -520,6 +520,8 @@ export default function AdminDashboard() {
           <Link to="/admin/chatbot" className="nav-link">Chatbot</Link>
 
           <Link to="/admin/settings" className="nav-link">Settings</Link>
+                              <Link to= "/admin/logout" className="nav-link">Logout</Link>
+          
 
         </nav>
 

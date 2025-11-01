@@ -15,6 +15,7 @@ import AdminLeads from "./pages/AdminLeads";
 import AdminQuotePricing from "./pages/AdminQuotePricing";
 import AdminChatbot from "./pages/AdminChatbot";
 import AdminSettings from "./pages/AdminSettings";
+import AdminLogout from "./pages/AdminLogout";
 
 function Home() {
   return (
@@ -52,6 +53,7 @@ export default function App() {
         <Route path="/admin/quote-pricing" element={<AdminQuotePricing />} />
         <Route path="/admin/chatbot" element={<AdminChatbot />} />
         <Route path="/admin/settings" element={<AdminSettings />} />
+        <Route path="/admin/logout" element={<AdminLogout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

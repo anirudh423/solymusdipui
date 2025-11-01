@@ -385,6 +385,8 @@ export default function AdminSettings() {
                     <Link to='/admin/quote-pricing' className="nav-link ">Quote Pricing</Link>
                     <Link to="/admin/chatbot" className="nav-link">Chatbot</Link>
                     <Link to="/admin/settings" className="nav-link active">Settings</Link>
+                                        <Link to= "/admin/logout" className="nav-link">Logout</Link>
+                    
                 </nav>
 
                 <div className="nav-foot small muted">Local storage: {STORAGE_KEY}</div>
