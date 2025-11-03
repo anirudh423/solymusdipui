@@ -1,7 +1,4 @@
-/* File: src/styles/solymus-logout.css
-   Matches the Solymus design tokens and uses the same look & feel.
-   Assumes :root tokens from your main stylesheet are already loaded.
-*/
+
 
 .logout-root {
   min-height: calc(100vh - 56px);
@@ -74,7 +71,6 @@
   to { transform: rotate(360deg); }
 }
 
-/* Buttons follow your Solymus tokens — but keep layout-specific overrides here */
 .btn-ghost, .btn-outline {
   padding: 8px 12px;
   border-radius: 8px;
@@ -85,7 +81,6 @@
   justify-content: center;
 }
 
-/* keep colors consistent with existing classes */
 .btn-ghost {
   background: transparent;
   border: 1px solid rgba(17, 24, 39, 0.06);
@@ -98,7 +93,6 @@
   border: none;
 }
 
-/* responsive */
 @media (max-width: 720px) {
   .logout-card {
     padding: 14px;
