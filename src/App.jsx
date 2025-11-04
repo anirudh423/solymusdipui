@@ -16,6 +16,7 @@ import AdminQuotePricing from "./pages/AdminQuotePricing";
 import AdminChatbot from "./pages/AdminChatbot";
 import AdminSettings from "./pages/AdminSettings";
 import AdminLogout from "./pages/AdminLogout";
+import LandingPage from "./pages/LandingPage";
 
 function Home() {
   return (
@@ -39,7 +40,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/quote-summary" element={<QuoteSummary />} />
         <Route path="/policy-purchase" element={<PolicyPurchase />} />
         <Route path="/admin/login" element={<AdminLogin />} />

@@ -298,7 +298,7 @@ export default function AdminLogin() {
                             </div>
                         </div>
 
-                        <div className="left-cta">
+                        <div className="left-cta" >
                             <button
                                 type="button"
                                 className={`btn-toggle ${demoMode ? "on" : ""}`}
@@ -308,6 +308,7 @@ export default function AdminLogin() {
                             >
                                 {demoMode ? "Demo: ON" : "Enable Demo"}
                             </button>
+                            <Link to={'/'} className="btn-toggle" >Home</Link>
                         </div>
 
                         <div className="hint">
@@ -323,7 +324,7 @@ export default function AdminLogin() {
                                 />
                                 <span>{theme === "dark" ? "Dark" : "Light"} theme</span>
                             </label>
-                        </div>
+                        </div>  
 
                         <div className="left-foot">Admin actions are auditable. Use credentials responsibly.</div>
                     </div>

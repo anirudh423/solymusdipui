@@ -121,10 +121,10 @@ body {
 }
 
 .main-area {
-    flex: 1;
+    flex: 2;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     max-width: calc(var(--max-width));
     margin: 0 auto;
 }

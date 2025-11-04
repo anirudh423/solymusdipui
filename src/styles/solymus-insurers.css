@@ -533,7 +533,7 @@
 .post-actions {
     display: flex;
     gap: 8px;
-    align-items: center;
+    align-items: space-between;
     justify-content: flex-end;
 }
 

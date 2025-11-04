@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
+import '../styles/AdminBlogs.css'
 
 const STORAGE_KEY = "solymus_blogs_v1";
 const THEME_KEY = "solymus_theme_v1";

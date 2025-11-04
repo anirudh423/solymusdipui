@@ -1068,7 +1068,7 @@ export default function AdminHospitals() {
                         </div>
                     </div>
 
-                    <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                    <div style={{ padding:'2px', display: "flex", gap: 4, alignItems: "center" }}>
                         <div className="search search-luxe" role="search" title="Press / to focus" style={{ minWidth: 340 }}>
                             <input
                                 ref={searchRef}
@@ -1115,25 +1115,17 @@ export default function AdminHospitals() {
                                     Export selected CSV
                                 </button>
 
-                                <div className="view-toggle" role="toolbar" aria-label="View">
-                                    <button className={`btn-ghost small ${viewMode === "grid" ? "active" : ""}`} title="Grid view" onClick={() => setViewMode("grid")}>
-                                        ▦
-                                    </button>
-                                    <button className={`btn-ghost small ${viewMode === "table" ? "active" : ""}`} title="Table view" onClick={() => setViewMode("table")}>
-                                        ≣
-                                    </button>
-                                </div>
+                                
 
                                 <button className="btn-primary" onClick={openNew} title="New hospital (N)">
                                     <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><IconPlus /> New hospital</span>
                                 </button>
                             </div>
 
-                            <div style={{ display: "flex", gap: 10, alignItems: "center", marginLeft: 10 }}>
+                            <div style={{ display: "flex", gap: 5, alignItems: "center", marginLeft: 10 }}>
                                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                                     <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                                         <IconBell badge={notificationCount} />
-                                        <button className="btn-ghost" onClick={() => showToast({ type: "info", text: `${notificationCount} items need review` })}>Notifications</button>
                                     </div>
                                     <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                                         <div style={{ fontSize: 13, color: "var(--muted)" }}>Demo Admin</div>
@@ -1197,7 +1189,7 @@ export default function AdminHospitals() {
                                 </div>
                             </div>
 
-                            <div className="mini-analytics" style={{ marginTop: 12 }}>
+                            <div className="mini-analytics" style={{ marginTop: 5 }}>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <div className="muted small">Top hospital</div>
                                     <div style={{ fontWeight: 900 }}>{topRated[0]?.name || "—"}</div>
@@ -1209,7 +1201,7 @@ export default function AdminHospitals() {
 
                 <main role="main" style={{ display: "grid", gridTemplateColumns: viewMode === "grid" ? "1fr 320px" : "1fr", gap: 12, alignItems: "start" }}>
                     <section>
-                        <div className="bento-card" style={{ marginTop: 4 }}>
+                        <div className="bento-card" style={{ marginTop: 4,gap:0,padding:0 , marginRight:-5 }}>
                             <div className="card-head" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                                 <div>
                                     <div className="title">Hospitals</div>

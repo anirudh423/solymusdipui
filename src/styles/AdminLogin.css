@@ -128,7 +128,7 @@ body{
 .meta-key{ font-size:11px; color:var(--muted); }
 .meta-val{ font-weight:700; margin-top:6px; font-size:13px; }
 
-.left-cta{ margin-top:10px; }
+.left-cta{ display:flex; margin-top:10px; gap:20px }
 .btn-toggle{ padding:10px 12px; border-radius:10px; background:linear-gradient(180deg, rgba(171,133,68,0.06), rgba(171,133,68,0.03)); border:1px solid rgba(171,133,68,0.06); font-weight:700; cursor:pointer; transition:transform 140ms ease, box-shadow 140ms; }
 .btn-toggle:hover{ transform:translateY(-3px); }
 .btn-toggle.on{ background:linear-gradient(180deg,var(--accent),var(--accent-2)); color:#111; box-shadow:0 12px 36px rgba(171,133,68,0.12); }
