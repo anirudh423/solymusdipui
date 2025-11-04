@@ -183,7 +183,7 @@ export default function SolymusLandingLuxeV5() {
 
                             <div className="lh-ctas" role="region" aria-label="Primary actions">
                                 <a className="btn-primary" href="/quote-summary">Buy Policy</a>
-                                <a className="btn-ghost" href="#quote">Get Quote</a>
+                                <a className="btn-ghost" href="/quote">Get Quote</a>
                                 <a className="btn-ghost" href="/hospitals">Find Hospital</a>
                             </div>
 

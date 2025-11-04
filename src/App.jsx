@@ -17,6 +17,7 @@ import AdminChatbot from "./pages/AdminChatbot";
 import AdminSettings from "./pages/AdminSettings";
 import AdminLogout from "./pages/AdminLogout";
 import LandingPage from "./pages/LandingPage";
+import FullQuoteCalculator from "./pages/FullQuoteCalculator";
 
 function Home() {
   return (
@@ -55,6 +56,7 @@ export default function App() {
         <Route path="/admin/chatbot" element={<AdminChatbot />} />
         <Route path="/admin/settings" element={<AdminSettings />} />
         <Route path="/admin/logout" element={<AdminLogout />} />
+        <Route path="/quote" element={<FullQuoteCalculator/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
