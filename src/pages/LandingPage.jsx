@@ -4,433 +4,433 @@ import PropTypes from "prop-types";
 
 
 export default function SolymusLandingLuxeV5() {
-  const [quote, setQuote] = useState({ name: "", age: "", sumInsured: "500000" });
-  const [quoteError, setQuoteError] = useState(null);
-  const [quoteResult, setQuoteResult] = useState(null);
-  const [term, setTerm] = useState("monthly");
-  const [isCalculating, setIsCalculating] = useState(false);
-  const rafRef = useRef(null);
-  const pulseTimeout = useRef(null);
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const testimonialTick = useRef(null);
-  const [testimonialAuto, setTestimonialAuto] = useState(true);
-  const decorRef = useRef(null);
+    const [quote, setQuote] = useState({ name: "", age: "", sumInsured: "500000" });
+    const [quoteError, setQuoteError] = useState(null);
+    const [quoteResult, setQuoteResult] = useState(null);
+    const [term, setTerm] = useState("monthly");
+    const [isCalculating, setIsCalculating] = useState(false);
+    const rafRef = useRef(null);
+    const pulseTimeout = useRef(null);
+    const [testimonialIndex, setTestimonialIndex] = useState(0);
+    const testimonialTick = useRef(null);
+    const [testimonialAuto, setTestimonialAuto] = useState(true);
+    const decorRef = useRef(null);
 
-  const partners = [
-    { id: 1, name: "Aureus Life", logo: "/images/partner-aureus.svg" },
-    { id: 2, name: "Pioneer Gen", logo: "/images/partner-pioneer.svg" },
-    { id: 3, name: "MediSure", logo: "/images/partner-medisure.svg" },
-    { id: 4, name: "CareNet", logo: "/images/partner-carenet.svg" },
-  ];
+    const partners = [
+        { id: 1, name: "Aureus Life", logo: "/images/partner-aureus.svg" },
+        { id: 2, name: "Pioneer Gen", logo: "/images/partner-pioneer.svg" },
+        { id: 3, name: "MediSure", logo: "/images/partner-medisure.svg" },
+        { id: 4, name: "CareNet", logo: "/images/partner-carenet.svg" },
+    ];
 
-  const blogs = [
-    { id: 1, title: "Understanding Health Insurance Basics", excerpt: "What a policy covers, what it doesn't, and what to watch for.", href: "/blog/understanding-health-insurance-basics" },
-    { id: 2, title: "Top 10 Hospitals in Your City", excerpt: "A quick guide to network hospitals and cashless claims.", href: "/blog/top-hospitals" },
-    { id: 3, title: "How to File a Claim", excerpt: "Step-by-step claim filing for faster settlements.", href: "/blog/how-to-file-a-claim" },
-  ];
+    const blogs = [
+        { id: 1, title: "Understanding Health Insurance Basics", excerpt: "What a policy covers, what it doesn't, and what to watch for.", href: "/blog/understanding-health-insurance-basics" },
+        { id: 2, title: "Top 10 Hospitals in Your City", excerpt: "A quick guide to network hospitals and cashless claims.", href: "/blog/top-hospitals" },
+        { id: 3, title: "How to File a Claim", excerpt: "Step-by-step claim filing for faster settlements.", href: "/blog/how-to-file-a-claim" },
+    ];
 
-  const testimonials = [
-    { id: 1, name: "Rina P.", text: "Solymus made buying a policy simple — fast quotes and friendly support.", role: "Product Designer" },
-    { id: 2, name: "Aman K.", text: "Claims were settled quickly when needed most. Highly recommend.", role: "Teacher" },
-    { id: 3, name: "Divya S.", text: "The claims concierge helped our family through a difficult time — empathetic and fast.", role: "Engineer" },
-  ];
+    const testimonials = [
+        { id: 1, name: "Rina P.", text: "Solymus made buying a policy simple — fast quotes and friendly support.", role: "Product Designer" },
+        { id: 2, name: "Aman K.", text: "Claims were settled quickly when needed most. Highly recommend.", role: "Teacher" },
+        { id: 3, name: "Divya S.", text: "The claims concierge helped our family through a difficult time — empathetic and fast.", role: "Engineer" },
+    ];
 
-  useEffect(() => {
-    const id = "solymus-landing-luxe-v5-styles";
-    if (!document.getElementById(id)) {
-      const s = document.createElement("style");
-      s.id = id;
-      s.innerHTML = styles;
-      document.head.appendChild(s);
-    }
-
-    testimonialTick.current = setInterval(() => {
-      if (testimonialAuto) setTestimonialIndex(i => (i + 1) % testimonials.length);
-    }, 5000);
-
-    function onKey(e) {
-      if (e.key === "ArrowLeft") setTerm("monthly");
-      if (e.key === "ArrowRight") setTerm("annual");
-      if (e.key.toLowerCase() === "t") setTestimonialAuto(a => !a);
-    }
-    window.addEventListener("keydown", onKey);
-
-    function onMove(e) {
-      const el = decorRef.current;
-      if (!el) return;
-      const x = (e.clientX / window.innerWidth - 0.5) * 12;
-      const y = (e.clientY / window.innerHeight - 0.5) * 5;
-      el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    }
-    window.addEventListener("mousemove", onMove);
-
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      clearTimeout(pulseTimeout.current);
-      clearInterval(testimonialTick.current);
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("mousemove", onMove);
-    };
-  }, []);
-
-  function animateNumber(target, duration = 900, onFrame) {
-    const start = performance.now();
-    const from = 0;
-    function step(now) {
-      const elapsed = now - start;
-      const t = Math.min(1, elapsed / duration);
-      const eased = 1 - Math.pow(1 - t, 3);
-      const val = Math.round(from + (target - from) * eased);
-      onFrame(val);
-      if (t < 1) rafRef.current = requestAnimationFrame(step);
-    }
-    rafRef.current = requestAnimationFrame(step);
-  }
-
-  function formatINR(n) {
-    return n.toLocaleString("en-IN");
-  }
-
-  function handleQuoteSubmit(e) {
-    e.preventDefault();
-    setQuoteError(null);
-    setQuoteResult(null);
-
-    if (!quote.name.trim()) {
-      setQuoteError("Please enter your name.");
-      document.querySelector('input[aria-label="Full name"]')?.focus();
-      return;
-    }
-    const age = parseInt(quote.age, 10);
-    if (!age || age < 18 || age > 100) {
-      setQuoteError("Enter a valid age (18–100).");
-      document.querySelector('input[aria-label="Age"]')?.focus();
-      return;
-    }
-
-    setIsCalculating(true);
-    setQuoteResult(null);
-
-    setTimeout(() => {
-      const base = 2500;
-      const ageFactor = Math.max(0, (age - 25) * 25);
-      const siFactor = Math.max(1, parseInt(quote.sumInsured, 10) / 100000);
-      let premium = Math.round((base + ageFactor) * siFactor);
-      if (term === "annual") premium = Math.round(premium * 10);
-
-      animateNumber(premium, 1100, (val) => setQuoteResult({ premium: val }));
-      setIsCalculating(false);
-
-      pulseTimeout.current = setTimeout(() => {
-        const el = document.querySelector(".luxe-result");
-        if (el) {
-          const shimmer = el.querySelector(".price-shimmer");
-          if (shimmer) {
-            shimmer.style.opacity = "1";
-            shimmer.style.animation = "priceShine 1.1s ease .12s 1";
-            setTimeout(() => {
-              shimmer.style.opacity = "0";
-              shimmer.style.animation = "";
-            }, 1500);
-          }
-          el.classList.add("luxe-result-pulse");
-          setTimeout(() => el.classList.remove("luxe-result-pulse"), 1200);
+    useEffect(() => {
+        const id = "solymus-landing-luxe-v5-styles";
+        if (!document.getElementById(id)) {
+            const s = document.createElement("style");
+            s.id = id;
+            s.innerHTML = styles;
+            document.head.appendChild(s);
         }
-      }, 700);
-    }, 520);
-  }
 
-  function scrollToQuote() {
-    const el = document.getElementById("quote-panel") || document.querySelector("#quote");
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
+        testimonialTick.current = setInterval(() => {
+            if (testimonialAuto) setTestimonialIndex(i => (i + 1) % testimonials.length);
+        }, 5000);
 
-  return (
-    <div className="luxe-root v5" aria-labelledby="luxe-hero-title">
+        function onKey(e) {
+            if (e.key === "ArrowLeft") setTerm("monthly");
+            if (e.key === "ArrowRight") setTerm("annual");
+            if (e.key.toLowerCase() === "t") setTestimonialAuto(a => !a);
+        }
+        window.addEventListener("keydown", onKey);
 
-      <div className="hero-foil" aria-hidden>
-        <svg viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice" className="foil-svg" ref={decorRef}>
-          <defs>
-            <linearGradient id="gGold" x1="0" x2="1">
-              <stop offset="0" stopColor="#f9d48a" />
-              <stop offset="1" stopColor="#f59e0b" />
-            </linearGradient>
-            <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="18" result="b"/>
-              <feBlend in="SourceGraphic" in2="b"/>
-            </filter>
-          </defs>
-          <g filter="url(#softBlur)" opacity="0.9">
-            <path d="M0 120 C180 20, 360 10, 600 70 C840 130, 980 220, 1200 160 L1200 360 L0 360 Z" fill="url(#gGold)" opacity="0.14"/>
-            <path d="M0 180 C160 120, 360 60, 600 110 C840 160, 980 260, 1200 220 L1200 360 L0 360 Z" fill="url(#gGold)" opacity="0.06"/>
-          </g>
-        </svg>
-      </div>
+        function onMove(e) {
+            const el = decorRef.current;
+            if (!el) return;
+            const x = (e.clientX / window.innerWidth - 0.5) * 12;
+            const y = (e.clientY / window.innerHeight - 0.5) * 5;
+            el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }
+        window.addEventListener("mousemove", onMove);
 
-      <div className="luxe-container" id="main">
-        <TopBar />
+        return () => {
+            cancelAnimationFrame(rafRef.current);
+            clearTimeout(pulseTimeout.current);
+            clearInterval(testimonialTick.current);
+            window.removeEventListener("keydown", onKey);
+            window.removeEventListener("mousemove", onMove);
+        };
+    }, []);
 
-        <main className="luxe-main">
-          <section className="luxe-hero">
-            <div className="lh-left">
-              <div className="lh-strap" aria-hidden>CONFIDENCE · CLARITY · CARE</div>
+    function animateNumber(target, duration = 900, onFrame) {
+        const start = performance.now();
+        const from = 0;
+        function step(now) {
+            const elapsed = now - start;
+            const t = Math.min(1, elapsed / duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            const val = Math.round(from + (target - from) * eased);
+            onFrame(val);
+            if (t < 1) rafRef.current = requestAnimationFrame(step);
+        }
+        rafRef.current = requestAnimationFrame(step);
+    }
 
-              <h1 id="luxe-hero-title" className="lh-title">
-                Protect what matters — <span className="lh-accent">intentional, elegant protection</span>.
-              </h1>
+    function formatINR(n) {
+        return n.toLocaleString("en-IN");
+    }
 
-              <p className="lh-lead">A modern underwriting engine paired with concierge support and a nationwide cashless network. Instant-ish quotes, curated plans, and claims handled like people — not processes.</p>
+    function handleQuoteSubmit(e) {
+        e.preventDefault();
+        setQuoteError(null);
+        setQuoteResult(null);
 
-              <div className="lh-ctas" role="region" aria-label="Primary actions">
-                <a className="btn-primary" href="/quote-summary">Buy Policy</a>
-                <a className="btn-ghost" href="#quote">Get Quote</a>
-                <a className="btn-ghost" href="/hospitals">Find Hospital</a>
-              </div>
+        if (!quote.name.trim()) {
+            setQuoteError("Please enter your name.");
+            document.querySelector('input[aria-label="Full name"]')?.focus();
+            return;
+        }
+        const age = parseInt(quote.age, 10);
+        if (!age || age < 18 || age > 100) {
+            setQuoteError("Enter a valid age (18–100).");
+            document.querySelector('input[aria-label="Age"]')?.focus();
+            return;
+        }
 
-              <div className="lh-trust" aria-hidden>
-                <div className="trust-label">Trusted by</div>
-                <PartnerMarquee partners={partners} />
-                <div className="trust-badges">
-                  <span className="trust-pill">IRDAI registered</span>
-                  <span className="trust-pill">ISO 27001</span>
-                  <span className="trust-pill">24/7 claims</span>
-                </div>
-              </div>
+        setIsCalculating(true);
+        setQuoteResult(null);
+
+        setTimeout(() => {
+            const base = 2500;
+            const ageFactor = Math.max(0, (age - 25) * 25);
+            const siFactor = Math.max(1, parseInt(quote.sumInsured, 10) / 100000);
+            let premium = Math.round((base + ageFactor) * siFactor);
+            if (term === "annual") premium = Math.round(premium * 10);
+
+            animateNumber(premium, 1100, (val) => setQuoteResult({ premium: val }));
+            setIsCalculating(false);
+
+            pulseTimeout.current = setTimeout(() => {
+                const el = document.querySelector(".luxe-result");
+                if (el) {
+                    const shimmer = el.querySelector(".price-shimmer");
+                    if (shimmer) {
+                        shimmer.style.opacity = "1";
+                        shimmer.style.animation = "priceShine 1.1s ease .12s 1";
+                        setTimeout(() => {
+                            shimmer.style.opacity = "0";
+                            shimmer.style.animation = "";
+                        }, 1500);
+                    }
+                    el.classList.add("luxe-result-pulse");
+                    setTimeout(() => el.classList.remove("luxe-result-pulse"), 1200);
+                }
+            }, 700);
+        }, 520);
+    }
+
+    function scrollToQuote() {
+        const el = document.getElementById("quote-panel") || document.querySelector("#quote");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    return (
+        <div className="luxe-root v5" aria-labelledby="luxe-hero-title">
+
+            <div className="hero-foil" aria-hidden>
+                <svg viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice" className="foil-svg" ref={decorRef}>
+                    <defs>
+                        <linearGradient id="gGold" x1="0" x2="1">
+                            <stop offset="0" stopColor="#f9d48a" />
+                            <stop offset="1" stopColor="#f59e0b" />
+                        </linearGradient>
+                        <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="18" result="b" />
+                            <feBlend in="SourceGraphic" in2="b" />
+                        </filter>
+                    </defs>
+                    <g filter="url(#softBlur)" opacity="0.9">
+                        <path d="M0 120 C180 20, 360 10, 600 70 C840 130, 980 220, 1200 160 L1200 360 L0 360 Z" fill="url(#gGold)" opacity="0.14" />
+                        <path d="M0 180 C160 120, 360 60, 600 110 C840 160, 980 260, 1200 220 L1200 360 L0 360 Z" fill="url(#gGold)" opacity="0.06" />
+                    </g>
+                </svg>
             </div>
 
-            <aside className="lh-right" id="quote" aria-labelledby="quote-title">
-              <div id="quote-panel" className="quote-card" role="region" aria-labelledby="quote-title">
-                <div className="quote-head">
-                  <div>
-                    <div className="muted small">Quick Quote</div>
-                    <div id="quote-title" className="quote-title">Estimate in seconds</div>
-                  </div>
-                  <div className="pill">No obligation</div>
-                </div>
+            <div className="luxe-container" id="main">
+                <TopBar />
 
-                <form className="quote-form" onSubmit={handleQuoteSubmit} noValidate>
-                  <label className="field">
-                    <span className="label">Full name</span>
-                    <input
-                      aria-label="Full name"
-                      value={quote.name}
-                      onChange={(e) => setQuote({ ...quote, name: e.target.value })}
-                      placeholder="Your full name"
-                      required
-                    />
-                  </label>
+                <main className="luxe-main">
+                    <section className="luxe-hero">
+                        <div className="lh-left">
+                            <div className="lh-strap" aria-hidden>CONFIDENCE · CLARITY · CARE</div>
 
-                  <div className="two-up">
-                    <label className="field">
-                      <span className="label">Age</span>
-                      <input
-                        type="number"
-                        min="18"
-                        max="100"
-                        aria-label="Age"
-                        value={quote.age}
-                        onChange={(e) => setQuote({ ...quote, age: e.target.value })}
-                        placeholder="Age"
-                        required
-                      />
-                    </label>
+                            <h1 id="luxe-hero-title" className="lh-title">
+                                Protect what matters — <span className="lh-accent">intentional, elegant protection</span>.
+                            </h1>
 
-                    <label className="field">
-                      <span className="label">Sum insured</span>
-                      <select aria-label="Sum insured" value={quote.sumInsured} onChange={(e) => setQuote({ ...quote, sumInsured: e.target.value })}>
-                        <option value="500000">₹5,00,000</option>
-                        <option value="1000000">₹10,00,000</option>
-                        <option value="2000000">₹20,00,000</option>
-                      </select>
-                    </label>
-                  </div>
+                            <p className="lh-lead">A modern underwriting engine paired with concierge support and a nationwide cashless network. Instant-ish quotes, curated plans, and claims handled like people — not processes.</p>
 
-                  {quoteError && <div className="form-error" role="alert">{quoteError}</div>}
+                            <div className="lh-ctas" role="region" aria-label="Primary actions">
+                                <a className="btn-primary" href="/quote-summary">Buy Policy</a>
+                                <a className="btn-ghost" href="#quote">Get Quote</a>
+                                <a className="btn-ghost" href="/hospitals">Find Hospital</a>
+                            </div>
 
-                  <div className="term-row" role="tablist" aria-label="Payment term">
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={term === "monthly"}
-                      className={`term ${term === "monthly" ? "active" : ""}`}
-                      onClick={() => setTerm("monthly")}
-                    >Monthly</button>
-
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={term === "annual"}
-                      className={`term ${term === "annual" ? "active" : ""}`}
-                      onClick={() => setTerm("annual")}
-                    >Annual</button>
-                  </div>
-
-                  <div className="actions-row">
-                    <button className="estimate-btn" type="submit" disabled={isCalculating} aria-busy={isCalculating}>
-                      {isCalculating ? "Calculating…" : "Estimate"}
-                    </button>
-                    <a className="buy-small" href="/buy">Buy now</a>
-                  </div>
-
-                  
-
-                  <div className="result-area" aria-live="polite" aria-atomic="true">
-                    {isCalculating && !quoteResult && (
-                      <div className="skeleton-result" aria-hidden>
-                        <div className="skeleton-line" />
-                      </div>
-                    )}
-
-                    {!isCalculating && quoteResult && (
-                      <div className="luxe-result" role="status" aria-live="polite">
-                        Approx.
-                        <div className="price-wrap">
-                          <span className="luxe-price">₹{formatINR(quoteResult.premium)}</span>
-                          <span className="luxe-period">{term === "monthly" ? " / month" : " / year (approx)"}</span>
+                            <div className="lh-trust" aria-hidden>
+                                <div className="trust-label">Trusted by</div>
+                                <PartnerMarquee partners={partners} />
+                                <div className="trust-badges">
+                                    <span className="trust-pill">IRDAI registered</span>
+                                    <span className="trust-pill">ISO 27001</span>
+                                    <span className="trust-pill">24/7 claims</span>
+                                </div>
+                            </div>
                         </div>
-                        <span className="price-shimmer" aria-hidden />
-                      </div>
-                    )}
-                  </div>
 
-                  <div className="disclaimer muted">We never share your details — sample estimate only.</div>
-                </form>
-              </div>
+                        <aside className="lh-right" id="quote" aria-labelledby="quote-title">
+                            <div id="quote-panel" className="quote-card" role="region" aria-labelledby="quote-title">
+                                <div className="quote-head">
+                                    <div>
+                                        <div className="muted small">Quick Quote</div>
+                                        <div id="quote-title" className="quote-title">Estimate in seconds</div>
+                                    </div>
+                                    <div className="pill">No obligation</div>
+                                </div>
 
-              <div className="contact-strip">
-                <div className="contact-ask">Prefer to speak with an advisor?</div>
-                <a className="contact-phone" href="tel:+911234567890">+91 12345 67890</a>
-              </div>
-            </aside>
-          </section>
+                                <form className="quote-form" onSubmit={handleQuoteSubmit} noValidate>
+                                    <label className="field">
+                                        <span className="label">Full name</span>
+                                        <input
+                                            aria-label="Full name"
+                                            value={quote.name}
+                                            onChange={(e) => setQuote({ ...quote, name: e.target.value })}
+                                            placeholder="Your full name"
+                                            required
+                                        />
+                                    </label>
 
-          <section id="features" className="features">
-            <Feature icon="🏥" title="Cashless Hospitalisation" desc="Access our nationwide cashless network across thousands of hospitals." />
-            <Feature icon="⚡" title="Fast Claims" desc="Concierge-led claims with transparent timelines and status updates." />
-            <Feature icon="🧩" title="Custom Plans" desc="Add maternity, OPD, critical illness and more to your base cover." />
-          </section>
+                                    <div className="two-up">
+                                        <label className="field">
+                                            <span className="label">Age</span>
+                                            <input
+                                                type="number"
+                                                min="18"
+                                                max="100"
+                                                aria-label="Age"
+                                                value={quote.age}
+                                                onChange={(e) => setQuote({ ...quote, age: e.target.value })}
+                                                placeholder="Age"
+                                                required
+                                            />
+                                        </label>
 
-          <section id="blogs" className="blogs">
-            <div className="blogs-main">
-              <div className="section-head">
-                <h2>Latest from our blog</h2>
-                <a className="view-all" href="/blog">View all</a>
-              </div>
-              <div className="blogs-grid">
-                {blogs.map(b => (
-                  <article className="article-card" key={b.id}>
-                    <div className="thumb" aria-hidden />
-                    <a className="article-title" href={b.href}>{b.title}</a>
-                    <p className="article-excerpt">{b.excerpt}</p>
-                    <a className="read-link" href={b.href}>Read →</a>
-                  </article>
-                ))}
-              </div>
+                                        <label className="field">
+                                            <span className="label">Sum insured</span>
+                                            <select aria-label="Sum insured" value={quote.sumInsured} onChange={(e) => setQuote({ ...quote, sumInsured: e.target.value })}>
+                                                <option value="500000">₹5,00,000</option>
+                                                <option value="1000000">₹10,00,000</option>
+                                                <option value="2000000">₹20,00,000</option>
+                                            </select>
+                                        </label>
+                                    </div>
+
+                                    {quoteError && <div className="form-error" role="alert">{quoteError}</div>}
+
+                                    <div className="term-row" role="tablist" aria-label="Payment term">
+                                        <button
+                                            type="button"
+                                            role="tab"
+                                            aria-selected={term === "monthly"}
+                                            className={`term ${term === "monthly" ? "active" : ""}`}
+                                            onClick={() => setTerm("monthly")}
+                                        >Monthly</button>
+
+                                        <button
+                                            type="button"
+                                            role="tab"
+                                            aria-selected={term === "annual"}
+                                            className={`term ${term === "annual" ? "active" : ""}`}
+                                            onClick={() => setTerm("annual")}
+                                        >Annual</button>
+                                    </div>
+
+                                    <div className="actions-row">
+                                        <button className="estimate-btn" type="submit" disabled={isCalculating} aria-busy={isCalculating}>
+                                            {isCalculating ? "Calculating…" : "Estimate"}
+                                        </button>
+                                        <a className="buy-small" href="/buy">Buy now</a>
+                                    </div>
+
+
+
+                                    <div className="result-area" aria-live="polite" aria-atomic="true">
+                                        {isCalculating && !quoteResult && (
+                                            <div className="skeleton-result" aria-hidden>
+                                                <div className="skeleton-line" />
+                                            </div>
+                                        )}
+
+                                        {!isCalculating && quoteResult && (
+                                            <div className="luxe-result" role="status" aria-live="polite">
+                                                Approx.
+                                                <div className="price-wrap">
+                                                    <span className="luxe-price">₹{formatINR(quoteResult.premium)}</span>
+                                                    <span className="luxe-period">{term === "monthly" ? " / month" : " / year (approx)"}</span>
+                                                </div>
+                                                <span className="price-shimmer" aria-hidden />
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="disclaimer muted">We never share your details — sample estimate only.</div>
+                                </form>
+                            </div>
+
+                            <div className="contact-strip">
+                                <div className="contact-ask">Prefer to speak with an advisor?</div>
+                                <a className="contact-phone" href="tel:+911234567890">+91 12345 67890</a>
+                            </div>
+                        </aside>
+                    </section>
+
+                    <section id="features" className="features">
+                        <Feature icon="🏥" title="Cashless Hospitalisation" desc="Access our nationwide cashless network across thousands of hospitals." />
+                        <Feature icon="⚡" title="Fast Claims" desc="Concierge-led claims with transparent timelines and status updates." />
+                        <Feature icon="🧩" title="Custom Plans" desc="Add maternity, OPD, critical illness and more to your base cover." />
+                    </section>
+
+                    <section id="blogs" className="blogs">
+                        <div className="blogs-main">
+                            <div className="section-head">
+                                <h2>Latest from our blog</h2>
+                                <a className="view-all" href="/blog">View all</a>
+                            </div>
+                            <div className="blogs-grid">
+                                {blogs.map(b => (
+                                    <article className="article-card" key={b.id}>
+                                        <div className="thumb" aria-hidden />
+                                        <a className="article-title" href={b.href}>{b.title}</a>
+                                        <p className="article-excerpt">{b.excerpt}</p>
+                                        <a className="read-link" href={b.href}>Read →</a>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+
+                        <aside className="side-col" aria-label="Social proof">
+                            <div className="testimonial-card">
+                                <h3>Customer spotlight</h3>
+                                <div className="testimonial-rotator" aria-live="polite">
+                                    <div className="testimonial-copy">“{testimonials[testimonialIndex].text}”</div>
+                                    <div className="testimonial-meta"><strong>{testimonials[testimonialIndex].name}</strong> — {testimonials[testimonialIndex].role}</div>
+                                    <div className="rotator-controls" aria-hidden>
+                                        {testimonials.map((t, i) => (
+                                            <button key={t.id} className={`dot ${i === testimonialIndex ? "on" : ""}`} onClick={() => { setTestimonialIndex(i); setTestimonialAuto(false); }} aria-label={`Show testimonial ${i + 1}`} />
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="rotator-ctrls-visual">
+                                    <button className="rot-ctrl" onClick={() => { setTestimonialIndex((testimonialIndex - 1 + testimonials.length) % testimonials.length); setTestimonialAuto(false); }} aria-label="Previous testimonial">‹</button>
+                                    <button className="rot-ctrl" onClick={() => { setTestimonialIndex((testimonialIndex + 1) % testimonials.length); setTestimonialAuto(false); }} aria-label="Next testimonial">›</button>
+                                </div>
+                            </div>
+
+                            <div className="certs">
+                                <h3>Partners & Certifications</h3>
+                                <div className="cert-grid">
+                                    <div>IRDAI Registered</div>
+                                    <div>ISO 27001</div>
+                                    <div>PCI-DSS</div>
+                                    <div>GDPR Ready</div>
+                                </div>
+                            </div>
+                        </aside>
+                    </section>
+                </main>
+
+                <Footer />
             </div>
 
-            <aside className="side-col" aria-label="Social proof">
-              <div className="testimonial-card">
-                <h3>Customer spotlight</h3>
-                <div className="testimonial-rotator" aria-live="polite">
-                  <div className="testimonial-copy">“{testimonials[testimonialIndex].text}”</div>
-                  <div className="testimonial-meta"><strong>{testimonials[testimonialIndex].name}</strong> — {testimonials[testimonialIndex].role}</div>
-                  <div className="rotator-controls" aria-hidden>
-                    {testimonials.map((t, i) => (
-                      <button key={t.id} className={`dot ${i === testimonialIndex ? "on" : ""}`} onClick={() => { setTestimonialIndex(i); setTestimonialAuto(false); }} aria-label={`Show testimonial ${i + 1}`} />
-                    ))}
-                  </div>
-                </div>
-                <div className="rotator-ctrls-visual">
-                  <button className="rot-ctrl" onClick={() => { setTestimonialIndex((testimonialIndex - 1 + testimonials.length) % testimonials.length); setTestimonialAuto(false); }} aria-label="Previous testimonial">‹</button>
-                  <button className="rot-ctrl" onClick={() => { setTestimonialIndex((testimonialIndex + 1) % testimonials.length); setTestimonialAuto(false); }} aria-label="Next testimonial">›</button>
-                </div>
-              </div>
-
-              <div className="certs">
-                <h3>Partners & Certifications</h3>
-                <div className="cert-grid">
-                  <div>IRDAI Registered</div>
-                  <div>ISO 27001</div>
-                  <div>PCI-DSS</div>
-                  <div>GDPR Ready</div>
-                </div>
-              </div>
-            </aside>
-          </section>
-        </main>
-
-        <Footer />
-      </div>
-
-      <button className="fab-quote" aria-label="Get quote" onClick={scrollToQuote}>
-        <span className="fab-icon" aria-hidden>✦</span> Get Quote
-      </button>
-    </div>
-  );
+            <button className="fab-quote" aria-label="Get quote" onClick={scrollToQuote}>
+                <span className="fab-icon" aria-hidden>✦</span> Get Quote
+            </button>
+        </div>
+    );
 }
 
 function TopBar() {
-  return (
-    <div className="topbar" role="navigation" aria-label="Top bar">
-      <div className="brand">
-        <div className="crest" aria-hidden>S</div>
-        <div className="brand-text">
-          <div className="brand-title">Solymus</div>
-          <div className="brand-sub">Insurance, human-first</div>
-        </div>
-      </div>
+    return (
+        <div className="topbar" role="navigation" aria-label="Top bar">
+            <div className="brand">
+                <div className="crest" aria-hidden>S</div>
+                <div className="brand-text">
+                    <div className="brand-title">Solymus</div>
+                    <div className="brand-sub">Insurance, human-first</div>
+                </div>
+            </div>
 
-      <div className="top-actions">
-        <a href="#features" className="link muted">Features</a>
-        <a href="#quote" className="link muted">Quick quote</a>
-        <a href="/buy" className="link cta">Buy Policy</a>
-        <a href = '/admin/login' className="link cta">Login </a>
-      </div>
-    </div>
-  );
+            <div className="top-actions">
+                <a href="#features" className="link muted">Features</a>
+                <a href="#quote" className="link muted">Quick quote</a>
+                <a href="/buy" className="link cta">Buy Policy</a>
+                <a href='/admin/login' className="link cta">Login </a>
+            </div>
+        </div>
+    );
 }
 
 function PartnerMarquee({ partners }) {
-  return (
-    <div className="partner-marquee" aria-hidden>
-      <div className="marquee-track" role="presentation">
-        <div className="marquee-group">
-          {partners.concat(partners).map((p, i) => (
-            <div key={`${p.id}-${i}`} className="marquee-item" title={p.name}><img src={p.logo} alt={p.name} /></div>
-          ))}
+    return (
+        <div className="partner-marquee" aria-hidden>
+            <div className="marquee-track" role="presentation">
+                <div className="marquee-group">
+                    {partners.concat(partners).map((p, i) => (
+                        <div key={`${p.id}-${i}`} className="marquee-item" title={p.name}><img src={p.logo} alt={p.name} /></div>
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 PartnerMarquee.propTypes = { partners: PropTypes.array };
 
 function Feature({ icon, title, desc }) {
-  return (
-    <div className="feature" tabIndex={0} aria-label={title}>
-      <div className="feature-icon" aria-hidden>{icon}</div>
-      <div className="feature-title">{title}</div>
-      <div className="feature-desc">{desc}</div>
-    </div>
-  );
+    return (
+        <div className="feature" tabIndex={0} aria-label={title}>
+            <div className="feature-icon" aria-hidden>{icon}</div>
+            <div className="feature-title">{title}</div>
+            <div className="feature-desc">{desc}</div>
+        </div>
+    );
 }
 Feature.propTypes = { icon: PropTypes.node, title: PropTypes.string, desc: PropTypes.string };
 
 function Footer() {
-  return (
-    <footer className="luxe-footer" role="contentinfo">
-      <div>
-        <div className="footer-name">Solymus</div>
-        <div className="footer-sub muted">© {new Date().getFullYear()} Solymus</div>
-      </div>
+    return (
+        <footer className="luxe-footer" role="contentinfo">
+            <div>
+                <div className="footer-name">Solymus</div>
+                <div className="footer-sub muted">© {new Date().getFullYear()} Solymus</div>
+            </div>
 
-      <div className="footer-links">
-        <a href="/terms">Terms</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/contact">Contact</a>
-      </div>
-    </footer>
-  );
+            <div className="footer-links">
+                <a href="/terms">Terms</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </footer>
+    );
 }
 
 const styles = `
