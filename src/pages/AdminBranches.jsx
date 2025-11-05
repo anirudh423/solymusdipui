@@ -411,8 +411,8 @@ export default function AdminBranches() {
                     <Link to="/admin/chatbot" className="nav-link">Chatbot</Link>
 
                     <Link to="/admin/settings" className="nav-link">Settings</Link>
-                                        <Link to= "/admin/logout" className="nav-link">Logout</Link>
-                    
+                    <Link to="/admin/logout" className="nav-link">Logout</Link>
+
 
                 </nav>
 
@@ -421,11 +421,11 @@ export default function AdminBranches() {
                 </div>
             </aside>
 
-            <main className="main-area" style={{ padding: 20 }}>
+            <main className="main-area" style={{ padding: 0 }}>
                 <header className="header-luxe header-hero" style={{
                     display: "grid",
                     gridTemplateColumns: "260px 1fr 320px",
-                    gap: 18,
+                    gap: 5,
                     alignItems: "start",
                     marginBottom: 18,
                     position: "relative",
@@ -553,34 +553,7 @@ export default function AdminBranches() {
                         </div>
                     </div>
 
-                    <div className="hero-right" style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-end" }}>
-                        <div style={{ display: "flex", gap: 12 }}>
-                            <div className="kpi-chip luxe" style={{ background: "linear-gradient(180deg,#fff,#fffef8)", padding: 12, borderRadius: 12, boxShadow: "0 10px 30px rgba(10,14,15,0.04)" }}>
-                                <div className="kpi-val" style={{ fontWeight: 900, fontSize: 18 }}>{branches.length}</div>
-                                <div className="kpi-sub muted small">Total</div>
-                            </div>
-                            <div className="kpi-chip luxe" style={{ background: "linear-gradient(180deg,#fff,#fffef8)", padding: 12, borderRadius: 12, boxShadow: "0 10px 30px rgba(10,14,15,0.04)" }}>
-                                <div className="kpi-val" style={{ fontWeight: 900, fontSize: 18 }}>{branches.filter((b) => b.status === "active").length}</div>
-                                <div className="kpi-sub muted small">Active</div>
-                            </div>
-                        </div>
 
-                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                            <select className="small-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)} title="Sort" style={{ padding: "8px 10px", borderRadius: 10 }}>
-                                <option value="createdDesc">Newest</option>
-                                <option value="createdAsc">Oldest</option>
-                                <option value="nameAsc">Name A → Z</option>
-                                <option value="nameDesc">Name Z → A</option>
-                            </select>
-
-                            <select className="small-select" value={perPage} onChange={(e) => { setPerPage(Number(e.target.value)); setPage(1); }} title="Rows per page" style={{ padding: "8px 10px", borderRadius: 10 }}>
-                                <option value={5}>5 / page</option>
-                                <option value={8}>8 / page</option>
-                                <option value={12}>12 / page</option>
-                                <option value={24}>24 / page</option>
-                            </select>
-                        </div>
-                    </div>
                 </header>
 
                 <section className="bento-card table-card" style={{ padding: 16, borderRadius: 12 }}>

@@ -19,6 +19,7 @@ import AdminLogout from "./pages/AdminLogout";
 import LandingPage from "./pages/LandingPage";
 import FullQuoteCalculator from "./pages/FullQuoteCalculator";
 import HospitalsPage from "./pages/HospitalsPage";
+import HospitalDetailsPage from "./pages/HospitalDetailsPage";
 
 function Home() {
   return (
@@ -57,8 +58,9 @@ export default function App() {
         <Route path="/admin/chatbot" element={<AdminChatbot />} />
         <Route path="/admin/settings" element={<AdminSettings />} />
         <Route path="/admin/logout" element={<AdminLogout />} />
-        <Route path="/quote" element={<FullQuoteCalculator/>}/>
-        <Route path="/hospitals" element={<HospitalsPage/>}/>
+        <Route path="/quote" element={<FullQuoteCalculator />} />
+        <Route path="/hospitals" element={<HospitalsPage />} />
+        <Route path="/hospitals/:id" element={<HospitalDetailsPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

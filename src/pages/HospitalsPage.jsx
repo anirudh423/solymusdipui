@@ -1,6 +1,7 @@
 
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function HospitalsPage() {
     const [pincode, setPincode] = useState("");
@@ -388,7 +389,7 @@ export default function HospitalsPage() {
                                     <>
                                         <div className="grid-list">
                                             {currentPageItems.map(h => (
-                                                <article key={h.id} className={`card ${selected?.id === h.id ? 'active' : ''}`} aria-labelledby={`h-${h.id}-name`}>
+                                                <Link to={'/hospitals/h-1'} key={'h-1'} className={`card ${selected?.id === h.id ? 'active' : ''}`} aria-labelledby={`h-${h.id}-name`}>
                                                     <div className="card-left">
                                                         <div id={`h-${h.id}-name`} className="name" title={h.name}>{h.name}</div>
                                                         <div className="meta" title={`${h.address} • ${h.city} • ${h.pincode}`}>{h.address} • {h.city} • {h.pincode}</div>
@@ -413,7 +414,7 @@ export default function HospitalsPage() {
                                                             <div className="muted tiny">{h.rating ?? "—"}</div>
                                                         </div>
                                                     </div>
-                                                </article>
+                                                </Link>
                                             ))}
                                         </div>
 
