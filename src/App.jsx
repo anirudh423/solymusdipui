@@ -21,6 +21,7 @@ import FullQuoteCalculator from "./pages/FullQuoteCalculator";
 import HospitalsPage from "./pages/HospitalsPage";
 import HospitalDetailsPage from "./pages/HospitalDetailsPage";
 import BranchesPage from "./pages/BranchesPage";
+import BlogsPage from "./pages/BlogsPage";
 
 function Home() {
   return (
@@ -63,6 +64,7 @@ export default function App() {
         <Route path="/hospitals" element={<HospitalsPage />} />
         <Route path="/hospitals/:id" element={<HospitalDetailsPage />} />
         <Route path="/branches" element={<BranchesPage/>}/>
+        <Route path="/blogs" element={<BlogsPage/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

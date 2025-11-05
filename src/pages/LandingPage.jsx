@@ -314,7 +314,7 @@ export default function SolymusLandingLuxeV5() {
                         <div className="blogs-main">
                             <div className="section-head">
                                 <h2>Latest from our blog</h2>
-                                <a className="view-all" href="/blog">View all</a>
+                                <a className="view-all" href="/blogs">View all</a>
                             </div>
                             <div className="blogs-grid">
                                 {blogs.map(b => (
