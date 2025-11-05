@@ -389,7 +389,7 @@ export default function HospitalsPage() {
                                     <>
                                         <div className="grid-list">
                                             {currentPageItems.map(h => (
-                                                <Link to={'/hospitals/h-1'} key={'h-1'} className={`card ${selected?.id === h.id ? 'active' : ''}`} aria-labelledby={`h-${h.id}-name`}>
+                                                <Link to={'/branches'} key={'h-1'} className={`card ${selected?.id === h.id ? 'active' : ''}`} aria-labelledby={`h-${h.id}-name`}>
                                                     <div className="card-left">
                                                         <div id={`h-${h.id}-name`} className="name" title={h.name}>{h.name}</div>
                                                         <div className="meta" title={`${h.address} • ${h.city} • ${h.pincode}`}>{h.address} • {h.city} • {h.pincode}</div>

@@ -20,6 +20,7 @@ import LandingPage from "./pages/LandingPage";
 import FullQuoteCalculator from "./pages/FullQuoteCalculator";
 import HospitalsPage from "./pages/HospitalsPage";
 import HospitalDetailsPage from "./pages/HospitalDetailsPage";
+import BranchesPage from "./pages/BranchesPage";
 
 function Home() {
   return (
@@ -61,6 +62,7 @@ export default function App() {
         <Route path="/quote" element={<FullQuoteCalculator />} />
         <Route path="/hospitals" element={<HospitalsPage />} />
         <Route path="/hospitals/:id" element={<HospitalDetailsPage />} />
+        <Route path="/branches" element={<BranchesPage/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
