@@ -25,6 +25,7 @@ import BlogsPage from "./pages/BlogsPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import InsurersPage from "./pages/InsurersPage";
 import ClaimRejectionForm from "./pages/ClaimRejectionForm";
+import ContactUs from "./pages/ContactUs";
 
 function Home() {
   return (
@@ -71,6 +72,7 @@ export default function App() {
         <Route path="/blogs/:slug" element={<BlogPostPage/>}/>
         <Route path="/insurers" element={<InsurersPage/>} />
         <Route path="/claim-rejection" element={<ClaimRejectionForm/>}/>
+        <Route path="/contact" element={<ContactUs/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
