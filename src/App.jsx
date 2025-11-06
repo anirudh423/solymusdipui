@@ -23,6 +23,7 @@ import HospitalDetailsPage from "./pages/HospitalDetailsPage";
 import BranchesPage from "./pages/BranchesPage";
 import BlogsPage from "./pages/BlogsPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import InsurersPage from "./pages/InsurersPage";
 
 function Home() {
   return (
@@ -67,6 +68,7 @@ export default function App() {
         <Route path="/branches" element={<BranchesPage/>}/>
         <Route path="/blogs" element={<BlogsPage/>}/>
         <Route path="/blogs/:slug" element={<BlogPostPage/>}/>
+        <Route path="/insurers" element={<InsurersPage/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
