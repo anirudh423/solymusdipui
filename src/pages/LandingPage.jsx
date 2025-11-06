@@ -382,7 +382,7 @@ function TopBar() {
 
             <div className="top-actions">
                 <a href="/insurers" className="link muted">Insurers</a>
-                <a href="#quote" className="link muted">Quick quote</a>
+                <a href="/claim-rejection" className="link muted">Claim</a>
                 <a href="/buy" className="link cta">Buy Policy</a>
                 <a href='/admin/login' className="link cta">Login </a>
             </div>
