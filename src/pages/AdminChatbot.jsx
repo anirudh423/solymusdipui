@@ -208,9 +208,9 @@ export default function AdminChatbot() {
                 <header className="header-hero hero-leads" role="region">
                     <div className="hero-left">
                         <div className="hero-badge">Bot</div>
-                        <div className="hero-title-wrap">
+                        <div className="hero-title">
                             <h1 className="hero-title">Chatbot configuration</h1>
-                            <div className="hero-subtle">Edit intents, map quick replies and test interaction flow.</div>
+                            <div className="hero-sub">Edit intents, map quick replies and test interaction flow.</div>
                         </div>
                         <p className="hero-sub">Keep conversational flows small and predictable — quick replies are surfaced as buttons in chat UI.</p>
 

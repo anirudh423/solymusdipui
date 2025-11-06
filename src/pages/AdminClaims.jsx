@@ -405,7 +405,7 @@ export default function AdminClaims() {
                 <header className="header-hero luxe-hero">
                     <div className="hero-left">
                         <div className="hero-badge">Claims</div>
-                        <div className="hero-title-wrap">
+                        <div className="hero-title">
                             <h1 className="hero-title">Claim Rejection Records</h1>
                         </div>
                         <p className="hero-sub">View and export rejected claim submissions. Filters, severity and smart exports help triage quickly.</p>

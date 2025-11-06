@@ -432,8 +432,8 @@ export default function AdminInsurers() {
           <div className="hero-left">
             <div className="hero-badge">Manage</div>
 
-            <div className="hero-title-wrap">
-              <h1 className="hero-title">Manage Insurers &amp; Forms</h1>
+            <div className="hero-title">
+              <h1 className="hero-title">Insurers</h1>
               <svg className="gold-flourish" viewBox="0 0 120 24" aria-hidden>
                 <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stopColor="#d39a2f" /><stop offset="1" stopColor="#f6d89b" /></linearGradient></defs>
                 <path d="M2 18 C28 4, 92 4, 118 18" stroke="url(#g)" strokeWidth="2.5" fill="none" strokeLinecap="round" />

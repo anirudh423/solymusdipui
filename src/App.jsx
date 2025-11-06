@@ -26,6 +26,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import InsurersPage from "./pages/InsurersPage";
 import ClaimRejectionForm from "./pages/ClaimRejectionForm";
 import ContactUs from "./pages/ContactUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function Home() {
   return (
@@ -74,6 +75,7 @@ export default function App() {
         <Route path="/claim-rejection" element={<ClaimRejectionForm/>}/>
         <Route path="/contact" element={<ContactUs/>} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
       </Routes>
     </BrowserRouter>
   );

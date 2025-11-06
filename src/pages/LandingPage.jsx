@@ -426,7 +426,7 @@ function Footer() {
 
             <div className="footer-links">
                 <a href="/terms">Terms</a>
-                <a href="/privacy">Privacy</a>
+                <a href="/privacy-policy">Privacy</a>
                 <a href="/contact">Contact</a>
             </div>
         </footer>

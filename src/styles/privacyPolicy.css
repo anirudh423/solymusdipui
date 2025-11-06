@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+.privacy-root {
+    min-height: 100vh;
+    background:
+        repeating-linear-gradient(0deg,
+            rgba(80, 60, 35, 0.01),
+            rgba(80, 60, 35, 0.01) 1px,
+            transparent 1px,
+            transparent 25px),
+        repeating-linear-gradient(90deg,
+            rgba(80, 60, 35, 0.01),
+            rgba(80, 60, 35, 0.01) 1px,
+            transparent 1px,
+            transparent 25px),
+        radial-gradient(1200px 600px at 15% 20%, rgba(80, 60, 35, 0.18), transparent 25%),
+        /* Strongest radial glow */
+        var(--bg-color);
+
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    color: var(--text);
+    padding: 60px 20px 120px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.privacy-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    margin-bottom: 32px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(8, 10, 12, 0.2);
+    border-radius: 12px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+    background: var(--text);
+    border-color: var(--text);
+    color: var(--accent-1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.policy-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 70px 40px 50px;
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft), 0 5px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(8, 10, 12, 0.15);
+}
+
+.policy-title {
+    margin: 0 0 16px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(52px, 7vw, 90px);
+    line-height: 1;
+    letter-spacing: -2.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.policy-subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-top: 3px solid rgba(8, 10, 12, 0.7);
+    padding-top: 20px;
+    display: inline-block;
+}
+
+.commitment-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 35px 50px;
+    margin-bottom: 40px;
+    background: var(--authority);
+    border-radius: 12px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+    color: var(--accent-1);
+    font-weight: 700;
+    font-size: 19px;
+    text-align: center;
+    line-height: 1.5;
+    border: 3px solid var(--accent-2);
+}
+
+.commitment-banner svg {
+    flex-shrink: 0;
+    color: var(--accent-1);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+}
+
+.banner-text {
+    margin: 0;
+    max-width: 800px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.policy-divider {
+    width: 100%;
+    max-width: 450px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 15%, var(--accent-2), transparent 85%);
+    margin: 0 auto 70px;
+    opacity: 1;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.policy-content {
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    border: 3px solid var(--authority);
+    padding: 80px 100px;
+    box-shadow: var(--shadow-card), inset 0 0 20px rgba(0, 0, 0, 0.03);
+}
+
+.policy-section {
+    margin-bottom: 60px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid rgba(8, 10, 12, 0.6);
+}
+
+.policy-section.final-section {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.section-header {
+    margin: 0 0 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--text);
+    position: relative;
+    padding-left: 55px;
+    line-height: 1.1;
+    letter-spacing: -1.2px;
+}
+
+.section-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 100%;
+    max-height: 52px;
+    background: var(--accent-2);
+    border-radius: 7px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.95), 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.section-body p {
+    margin: 0 0 32px;
+    line-height: 2.1;
+    color: var(--muted);
+    font-size: 18px;
+    text-rendering: optimizeLegibility;
+    text-shadow: 0.05px 0.05px 0px rgba(0, 0, 0, 0.15);
+}
+
+.section-body ul,
+.section-body ol {
+    margin: 0 0 32px 30px;
+    padding: 0;
+    list-style-position: inside;
+}
+
+.section-body ol {
+    counter-reset: policy-counter;
+    list-style: none;
+}
+
+.section-body ol li {
+    counter-increment: policy-counter;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    line-height: 2.1;
+}
+
+.section-body ol li::before {
+    content: counter(policy-counter) ".";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: var(--accent-2);
+    font-weight: 900;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    letter-spacing: -2px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.section-body li {
+    color: var(--muted);
+    font-size: 17px;
+}
+
+.section-body li strong {
+    color: var(--text);
+    font-weight: 800;
+}
+
+.contact-details {
+    font-style: normal;
+    padding: 45px;
+    margin-top: 40px;
+    line-height: 2.2;
+    color: var(--text);
+    background: #f8f8f8;
+    border: 3px solid var(--authority);
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    font-size: 17px;
+    background-image: repeating-linear-gradient(90deg,
+            rgba(30, 58, 83, 0.1),
+            rgba(30, 58, 83, 0.1) 1px,
+            transparent 1px,
+            transparent 100px);
+}
+
+.contact-details a {
+    color: var(--authority);
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 3px solid var(--accent-1);
+    padding-bottom: 2px;
+}
+
+.contact-details a:hover {
+    color: var(--accent-2);
+}
+
+.security-highlight {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 35px;
+    margin-top: 35px;
+    background: linear-gradient(135deg, rgba(26, 122, 73, 0.35), rgba(26, 122, 73, 0.25));
+    border: 4px solid var(--success);
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--success);
+}
+
+.policy-metadata {
+    max-width: 850px;
+    margin: 80px auto 0;
+    padding: 45px 50px;
+    border: 4px solid var(--accent-2);
+    border-radius: 18px;
+    background: linear-gradient(180deg, #fefefe, #fdf8f4);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+}
+
+.metadata-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--authority);
+    margin-bottom: 30px;
+    border-bottom: 3px solid rgba(8, 10, 12, 0.4);
+    padding-bottom: 20px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.metadata-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 50px;
+}
+
+.metadata-item {
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.6;
+    border-left: 6px solid var(--accent-1);
+    padding-left: 25px;
+    font-weight: 500;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.metadata-item strong {
+    color: var(--text);
+    font-weight: 800;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.policy-footer {
+    max-width: 1000px;
+    margin: 60px auto 0;
+    text-align: center;
+    padding-top: 40px;
+    border-top: 4px solid rgba(8, 10, 12, 0.85);
+    color: var(--muted);
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 1.5px;
+}
+
+.policy-footer p {
+    margin: 0;
+    padding: 0;
+}
+
+
+@media (max-width: 900px) {
+    .policy-content {
+        padding: 50px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .privacy-root {
+        padding: 40px 16px 80px;
+    }
+
+    .policy-title {
+        font-size: 60px;
+        letter-spacing: -1.5px;
+    }
+
+    .policy-subtitle {
+        font-size: 17px;
+        letter-spacing: 2px;
+    }
+
+    .commitment-banner {
+        padding: 25px 24px;
+        font-size: 16px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .policy-divider {
+        margin: 0 auto 40px;
+    }
+
+    .policy-content {
+        padding: 30px 24px;
+    }
+
+    .section-header {
+        font-size: 32px;
+        padding-left: 40px;
+    }
+
+    .section-header::before {
+        width: 8px;
+        max-height: 40px;
+    }
+
+    .section-body p,
+    .section-body li {
+        font-size: 17px;
+        line-height: 1.9;
+    }
+
+    .metadata-table {
+        grid-template-columns: 1fr;
+    }
+
+    .policy-footer {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .policy-header {
+        padding: 30px 16px 20px;
+    }
+
+    .policy-title {
+        font-size: 42px;
+    }
+
+    .policy-subtitle {
+        font-size: 15px;
+        letter-spacing: 1.5px;
+    }
+
+    .policy-content {
+        padding: 20px 16px;
+    }
+
+    .section-header {
+        font-size: 28px;
+        padding-left: 35px;
+    }
+
+    .section-header::before {
+        width: 6px;
+        max-height: 35px;
+    }
+
+    .section-body p {
+        font-size: 16px;
+    }
+
+    .contact-details {
+        padding: 25px 20px;
+        font-size: 15px;
+    }
+
+    .policy-metadata {
+        padding: 30px 20px;
+        margin-top: 60px;
+    }
+
+    .metadata-title {
+        font-size: 22px;
+    }
+}

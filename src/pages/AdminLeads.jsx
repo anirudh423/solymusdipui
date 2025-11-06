@@ -481,9 +481,9 @@ export default function AdminLeads() {
         <header className="header-hero luxe-hero hero-leads" role="region" aria-label="Leads overview">
           <div className="hero-left">
             <div className="hero-badge">Leads</div>
-            <div className="hero-title-wrap">
+            <div className="hero-title">
               <h1 className="hero-title">Captured Leads</h1>
-              <div className="hero-subtle">A curated inbox of inbound interest — triage, contact, convert.</div>
+              <div className="hero-sub">A curated inbox of inbound interest — triage, contact, convert.</div>
             </div>
 
             <p className="hero-sub">View and manage leads collected from contact forms, downloads and campaigns.</p>
