@@ -22,6 +22,7 @@ import HospitalsPage from "./pages/HospitalsPage";
 import HospitalDetailsPage from "./pages/HospitalDetailsPage";
 import BranchesPage from "./pages/BranchesPage";
 import BlogsPage from "./pages/BlogsPage";
+import BlogPostPage from "./pages/BlogPostPage";
 
 function Home() {
   return (
@@ -65,6 +66,7 @@ export default function App() {
         <Route path="/hospitals/:id" element={<HospitalDetailsPage />} />
         <Route path="/branches" element={<BranchesPage/>}/>
         <Route path="/blogs" element={<BlogsPage/>}/>
+        <Route path="/blogs/:slug" element={<BlogPostPage/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

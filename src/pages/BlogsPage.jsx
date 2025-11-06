@@ -140,6 +140,7 @@ export default function BlogsPage() {
             <div className="blogs-shell">
                 <header className="page-hero">
                     <div className="hero-left">
+                        <Link to={'/'}>Back</Link>
                         <h1>Thoughtful Writing on Design, Ops & Product</h1>
                         <p className="hero-sub">
                             A carefully curated collection — stories about service, design, and
@@ -255,7 +256,7 @@ export default function BlogsPage() {
                                             </span>
                                         ))}
                                     </div>
-                                    <Link to={`/blogs/${p.id}`} className="btn primary">
+                                    <Link to={`/blogs/p-1`} className="btn primary">
                                         Read
                                     </Link>
                                 </article>

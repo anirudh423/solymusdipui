@@ -24,9 +24,9 @@ export default function SolymusLandingLuxeV5() {
     ];
 
     const blogs = [
-        { id: 1, title: "Understanding Health Insurance Basics", excerpt: "What a policy covers, what it doesn't, and what to watch for.", href: "/blog/understanding-health-insurance-basics" },
-        { id: 2, title: "Top 10 Hospitals in Your City", excerpt: "A quick guide to network hospitals and cashless claims.", href: "/blog/top-hospitals" },
-        { id: 3, title: "How to File a Claim", excerpt: "Step-by-step claim filing for faster settlements.", href: "/blog/how-to-file-a-claim" },
+        { id: 1, title: "Understanding Health Insurance Basics", excerpt: "What a policy covers, what it doesn't, and what to watch for.", href: "/blogs/p-1" },
+        { id: 2, title: "Top 10 Hospitals in Your City", excerpt: "A quick guide to network hospitals and cashless claims.", href: "/blogs/p-1" },
+        { id: 3, title: "How to File a Claim", excerpt: "Step-by-step claim filing for faster settlements.", href: "/blogs/p-1" },
     ];
 
     const testimonials = [

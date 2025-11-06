@@ -25,6 +25,7 @@
     "prop-types": "^15.8.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-helmet": "^6.1.0",
     "react-router-dom": "^6.20.0",
     "stripe": "^12.9.0",
     "xlsx": "^0.18.5"
