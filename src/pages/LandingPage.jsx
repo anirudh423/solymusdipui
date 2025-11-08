@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 
 
@@ -185,6 +186,7 @@ export default function SolymusLandingLuxeV5() {
                                 <a className="btn-primary" href="/quote-summary">Buy Policy</a>
                                 <a className="btn-ghost" href="/quote">Get Quote</a>
                                 <a className="btn-ghost" href="/hospitals">Find Hospital</a>
+                                <a className="btn-ghost" href="/lead-form">Leads</a>
                             </div>
 
                             <div className="lh-trust" aria-hidden>
@@ -362,9 +364,9 @@ export default function SolymusLandingLuxeV5() {
                 <Footer />
             </div>
 
-            <button className="fab-quote" aria-label="Get quote" onClick={scrollToQuote}>
-                <span className="fab-icon" aria-hidden>✦</span> Get Quote
-            </button>
+            <Link to={'/chat'} className="fab-quote" aria-label="Get quote" >
+                <span className="fab-icon" aria-hidden>✦</span> Chat
+            </Link>
         </div>
     );
 }
@@ -425,7 +427,7 @@ function Footer() {
             </div>
 
             <div className="footer-links">
-                <a href="/terms">Terms</a>
+                <a href="/terms-and-conditions">Terms</a>
                 <a href="/privacy-policy">Privacy</a>
                 <a href="/contact">Contact</a>
             </div>

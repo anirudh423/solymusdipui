@@ -27,6 +27,9 @@ import InsurersPage from "./pages/InsurersPage";
 import ClaimRejectionForm from "./pages/ClaimRejectionForm";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import Chat from "./pages/Chat";
+import LeadForm from "./pages/LeadForm";
 
 function Home() {
   return (
@@ -76,6 +79,9 @@ export default function App() {
         <Route path="/contact" element={<ContactUs/>} />
         <Route path="*" element={<NotFound />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+        <Route path="/terms-and-conditions" element={<TermsAndConditions/>} />
+        <Route path="/chat" element={<Chat/>} />
+        <Route path="/lead-form" element={<LeadForm/>} />
       </Routes>
     </BrowserRouter>
   );
